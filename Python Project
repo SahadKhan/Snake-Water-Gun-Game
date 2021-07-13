@@ -1,0 +1,115 @@
+import random, playsound
+
+
+def winingsound():
+    win_music = ["anime wow.mp3", "bruhh.mp3"]
+    try:
+        playsound.playsound(random.choice(win_music))
+    except Exception as e:
+        print(e)
+
+
+def losing_music():
+    lose_music = ["Nope.mp3", "Fart.mp3"]
+    try:
+        playsound.playsound(random.choice(lose_music))
+    except Exception as e:
+        print(e)
+
+
+def tiemusic():
+    tie_music = ["Akwarrd Cricket.mp3"]
+    try:
+        playsound.playsound(random.choice(tie_music))
+    except Exception as e:
+        print(e)
+
+
+if__name__ = "__main__"
+print("Welcome to the Snake Water Gun game")
+
+life = 1
+yourscore = 0
+computerscore = 0
+while (life < 5):
+    choices = ["s", "w", "g"]
+    rand = random.choice(choices)
+    a = input("Enter S for Snake W for Water and G for Gun")
+    a = a.lower()
+    if a == "w" and rand == "w":
+        print("Tie")
+        print(f"You and Computer both choose water")
+        print("Nobody gets point")
+        tiemusic()
+    elif a == "s" and rand == "s":
+        print("Tie")
+        print(f"You and Computer both choose snake")
+        print("Nobody gets point")
+        tiemusic()
+    elif a == "g" and rand == "g":
+        print("Tie")
+        print(f"You and Computer both choose gun")
+        print("Nobody gets point")
+        tiemusic()
+    elif a == "g" and rand == "w":
+        print(f"Your gun drops into the water")
+        print("You pressed g and computer pressed w")
+        print("Computer gets pont")
+        computerscore = computerscore + 1
+        winingsound()
+    elif a == "w" and rand == "g":
+        print(f"Computer guns drops into the water")
+        print("You pressed w and computer pressed g")
+        print("You won")
+        yourscore = yourscore + 1
+        winingsound()
+    elif a == "s" and rand == "w":
+        print(f"All the water drank by snake")
+        print("You pressed s and computer pressed w")
+        print("You won")
+        yourscore = yourscore + 1
+        winingsound()
+    elif a == "w" and rand == "s":
+        print(f"All the water drank by snake")
+        print("You pressed w and computer pressed s")
+        print("Computer won")
+        losing_music()
+        Computerscore = Computerscore + 1
+    elif a == "g" and rand == "w":
+        print(f"Gun fell into the wateer")
+        print("You pressed g and computer pressed w")
+        print("Computer won")
+        Computerscore = Computerscore + 1
+        losing_music()
+
+    elif a == "g" and rand == "s":
+        print(f"\nYou choosed gun and Computer chose snake! ")
+        yourscore = yourscore + 1
+        print("The snake was shot and it died\n")
+        print("You won this round")
+        print("You get 1 point\n")
+        winingsound()
+
+    elif a == "s" and rand == "g":
+        print(f"\nYou choosed snake and Computer chose gun! ")
+        computerscore = computerscore + 1
+        print("The snake was shot and he died\n")
+        print("You lost this round!")
+        print("Computer gets 1 point\n")
+        losing_music()
+    else:
+        print("Invalid input")
+        continue
+    print("Number of life left".format(10 - life))
+    life = life + 1
+
+    if life > 10:
+        print("Game Over")
+
+print(f"Your score :{yourscore}  and computer score: {computerscore}")
+if computerscore > yourscore:
+    print("Computer wins")
+elif yourscore > computerscore:
+    print("You win")
+else:
+    print("tie Match")
